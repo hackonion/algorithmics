@@ -17,17 +17,20 @@
 
 if __name__ == '__main__':
     students = []
+    scores = set()
+    second_lower = []
+    
     for _ in range(int(input())):
         name = input()
         score = float(input())
         students.append([name,score])
+        scores.add(score)
     
-
-    new = []
-    ordened_list = sorted(students,key=lambda x:x[1])
-    new = ordened_list[1:3][:]
-    new.sort(key=lambda x:x[0])
-
-
-    for index,i in enumerate(new):
-        print(i[:][0])
+    lower = sorted(scores)[1]
+    
+    for name, score in students:
+        if score == lower:
+            second_lower.append(name)
+    
+    for name in sorted(second_lower):
+        print(name, end="\n")
